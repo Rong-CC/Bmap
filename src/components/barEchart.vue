@@ -1,9 +1,11 @@
+
 <template>
   <div id="chart">
-    <div
-      :id='title'
+      <div
+      :id='id'
       style='width:100%;height:180px'
     ></div>
+
   </div>
 </template>
 
@@ -17,17 +19,20 @@ export default {
     };
   },
   props:{
-      title:String
+      title:{
+        type:String,
+        },
+        id: String
     },
   methods: {
        drawLine(){
         // 基于准备好的dom，初始化echarts实例
-        let myChart = echarts.init(document.getElementById(this.title))
+        let myChart = echarts.init(document.getElementById(this.id))
         // 绘制图表
         myChart.setOption({
             color: ['#f44'],
             title: { 
-              text: '最近七天排行榜',
+              text: this.title,
               textStyle:{
                 fontSize:12,
                 color:'#1aa367'

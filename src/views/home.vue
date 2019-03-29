@@ -15,23 +15,37 @@
       </div>
       <div class="Recent-data">
         <div class="Recent-data-chart">
-            <chart :title="'we'"></chart>
+            <chart :id="'we'" title="最近7天品类销售排行'"> </chart>
         </div>
         <div class="Recent-data-chart">
-           <chart :title="'my'"></chart>
+           <chart :id="'my'" title="'最近7天单品销售排行"> </chart>
         </div>
         <div class="Recent-data-chart">
-            <chart :title="'ms'"></chart>
+            <chart :id="'ms'" :title="贫困县卖家数据排行"></chart>
         </div>
       </div>
-      <div></div>
     </section>
     <section class="right">
       <div class="right-mian">
         <div class="right-bottom-box">
-
+              
+            <div class="SymptomsFigure">
+               <div class="SymptomsFigure-itme">
+                 <pic-chart :title="'ss'">
+                  <p class="titlecolor">产品品类</p>
+                </pic-chart>
+               </div>
+                <div class="SymptomsFigure-wrap">
+                  <h3 class="yellowcolor texta-lige">4564655</h3>
+                  <h5 class="titlecolor texta-lige">累计商品数</h5>
+                  <h3 class="yellowcolor texta-lige">456456</h3>
+                  <h5 class="titlecolor texta-lige" >累计使用真源码企业数</h5>
+                </div>
+            </div>
         </div>
-        <div class="right-commodity"></div>
+        <div class="right-commodity">
+           
+        </div>
       </div>
     </section>
     <my-map></my-map>
@@ -41,7 +55,7 @@
 <script>
 import chart from '../components/barEchart.vue'
 import myMap from '../components/map/index'
- import BMap from 'BMap' 
+import picChart from '../components/pieEcharts'
 export default {
   name: "home",
   data() {
@@ -67,7 +81,8 @@ export default {
   },
   components:{
     chart,
-     myMap
+     myMap,
+     picChart 
   }
   
 };
@@ -97,7 +112,7 @@ export default {
   /* z-index: 999; */
 }
 .left {
-  width: 25%;
+  width: 20%;
   height: 100%;
   background: #16282e;
   box-sizing: border-box;
@@ -117,9 +132,9 @@ export default {
   margin-top: 30px;
    padding-bottom: 10px;
 }
-.aggregate-data h3{
+.aggregate-data h3, .SymptomsFigure-wrap h3{
   font-size: 2em;
-  font-weight: 600;
+  /* font-weight: 600; */
   padding-bottom: 10px;
 }
 .Recent-data {
@@ -129,8 +144,10 @@ export default {
   
 }
 .Recent-data-chart{
-  width: 70%;
+  width: 100%;
   padding-left:30px; 
+  box-sizing: border-box;
+  padding-right: 30px;
 }
 .right {
   flex-grow: 1;
@@ -160,11 +177,37 @@ export default {
   /* background: khaki; */
   z-index: 999;
 }
+.SymptomsFigure{
+    width: 500px;
+    height: 100%;
+    box-sizing: border-box;
+    background: #16281e;
+    display: flex;
+}
+.SymptomsFigure-itme{
+  width: 40%;
+  height: 90%;
+  padding-left: 20px;
+}
+.SymptomsFigure-itme p{
+  text-align: center;
+  padding-top: 10px;
+}
+.SymptomsFigure-wrap{
+  width: 40%;
+  height: 85%;
+  box-sizing: border-box;
+  margin-left: 40px;
+}
+
+.SymptomsFigure-wrap h3 {
+  margin-top: 40px;
+}
 </style>
 <style>
   .titlecolor{
     color:#77f1ef;
-    font-weight: 600;
+    /* font-weight: 600; */
   }
   .yellowcolor{
     color:#ff9b00;
@@ -172,5 +215,7 @@ export default {
   .commoncolor{
     color: #1aa367;
   }
-
+ .texta-lige{
+    text-align: center;
+ }
 </style>
